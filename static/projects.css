@@ -1,0 +1,79 @@
+.gallery-container {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transform: translateX(20vw);
+}
+
+.gallery-row {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.gallery-box {
+    flex: 1;
+    height: 400px;
+    background-color: #35415e;
+    background-size: 60% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #333333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: flex-end;
+}
+
+.gallery-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-box img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+.caption {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(53 65 94 / 85%);
+}
+
+.caption h3 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+    color: #58cbf8;
+}
+
+.caption p {
+    font-family: "Andale Mono", AndaleMono, monospace;
+    font-size: 0.95rem;
+    color: #35a7d4;
+    line-height: 1.4;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    font-family: "Andale Mono", AndaleMono, monospace;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

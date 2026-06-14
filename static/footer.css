@@ -1,0 +1,29 @@
+.footer {
+    margin-top: auto;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.footer-item {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 30px;
+    letter-spacing: 0.1em;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#footer-button:hover {
+    background-color: rgba(255, 255, 255, 0.30);
+    transform: scale(1.08);
+}
+
+#footer-button:active {
+    transform: scale(0.95);
+}

@@ -1,0 +1,94 @@
+@import 'nav.css';
+@import 'footer.css';
+@import 'home-button.css';
+@import 'shape.css';
+@import 'projects.css';
+
+html {
+  background-color: #2b354d;
+  scrollbar-gutter: stable both-edges;
+}
+
+h1 {
+  color: white; 
+  font-size: 56px;
+  font-family: Calibri, sans-serif;
+  font-weight: bold;
+  margin-top: 120px;
+  transform: translateX(20vw);
+}
+
+h2 {
+  color: white;
+  font-size: 30px;
+  font-family: Calibri, sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  color: white;
+  font-size: 24px;
+  font-family: Calibri, sans-serif;
+  font-weight: bold;
+}
+
+p {
+  font-size: 18px;
+}
+
+.page-content {
+  margin: 0;
+  padding: 0;
+  min-height: 94vh;
+}
+
+.bg1 {
+  color: white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  transform: translateX(20vw);
+  width: 800px;
+}
+
+.name {
+  color: white;
+  font-size: 32px;
+  font-family: Calibri, sans-serif;
+  font-weight: bold;
+  margin-inline: 1em;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+}
+
+.description {
+  margin-top: 50px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.inline-center {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img {
+  height: 64px;
+  width: auto; 
+  max-width: 100%;
+  filter: invert(100%);
+}
+
+.inline-img {
+  height: 300px;
+  width: auto; 
+  transform: translateX(20vw);
+  max-width: 100%;
+}
