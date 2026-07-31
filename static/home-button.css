@@ -25,3 +25,7 @@
 .home-btn:active {
     transform: scale(0.95);
 }
+
+.home-btn img {
+    width: 45px;
+}
