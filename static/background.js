@@ -11,12 +11,12 @@ const mouse = {
 };
 
 const points = [];
-const spacing = 170;
+const spacing = 160;
 
 for (let x = 0; x <= width + spacing; x += spacing) {
     for (let y = 0; y <= height + spacing; y += spacing) {
-        const origX = x + (Math.random() - 0.5) * spacing * 0.7;
-        const origY = y + (Math.random() - 0.5) * spacing * 0.7;
+        const origX = x + (Math.random() - 0.5) * spacing * 0.5;
+        const origY = y + (Math.random() - 0.5) * spacing * 0.5;
         points.push({
             origX: origX, origY: origY,
             x: origX, y: origY,
@@ -60,12 +60,10 @@ function animate() {
         for (let point of points) {
             let dist = Math.sqrt(Math.pow(p.origX - point.origX, 2) + Math.pow(p.origY - point.origY, 2));
 
-            if (dist < 250) {
+            if (dist < 245) {
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
-
                 ctx.lineTo(point.x, point.y);
-
                 ctx.stroke();
             }
         }
