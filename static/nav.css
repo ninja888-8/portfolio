@@ -8,8 +8,12 @@
   left: 0;
   right: 0;
   height: 10vh;
-  position: fixed;
   z-index: 1;
+}
+
+.nav-options {
+  display: flex;
+  align-items: center;
 }
 
 .nav-options a {
@@ -17,8 +21,7 @@
   font-size: 24px;
   text-align: center;
   text-decoration: none;
-  padding: 12px 30px 12px 30px;
-  margin-right: 1vh;
+  padding: 12px 30px;
   font-family: Calibri, sans-serif;
   font-weight: bold;
   border: none;
@@ -27,6 +30,22 @@
 .nav-options a:hover {
   background-color: #5b71a5;
   color: #ffffff;
+}
+
+.nav-options a.img-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-options img {
+  max-height: 100%;
+  width: auto;
+  display: block;
+}
+
+.nav-options img:hover {
+  background-color: #5b71a5;
+  cursor: pointer;
 }
 
 /* note: unused currently
@@ -39,7 +58,7 @@
     </div>
 </div>
 */
-.dropdown {
+/* .dropdown {
   position: relative;
   display: inline-block;
 }
@@ -69,4 +88,4 @@
 
 .dropdown:hover .projects-list {
   display: block;
-}
+} */

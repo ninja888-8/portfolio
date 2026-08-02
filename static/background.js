@@ -68,7 +68,10 @@ function animate() {
             }
         }
     }
-    requestAnimationFrame(animate);
+
+    if (window.location.pathname !== '/garden.html') { // only displays the visual
+        requestAnimationFrame(animate);
+    }
 }
 
 function trackMouse() {
@@ -85,4 +88,6 @@ function trackMouse() {
 }
 
 animate();
-trackMouse();
+if (window.location.pathname !== '/garden.html') { // only displays the visual
+    trackMouse();
+}

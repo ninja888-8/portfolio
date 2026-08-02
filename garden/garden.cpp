@@ -23,10 +23,12 @@ struct TurtleState {
 
 class Tree {
     private:
+        int treeType = 1;
+
         string currentSentence, axiom = "FX";
         float angleStep = 35.0f * (M_PI / 180.0f); // deg to rad
-        float initialLength = 25.0f;
-        float lengthFactor = 0.8f;
+        float initialLength = 35.0f;
+        float lengthFactor = 1.0f;
         int growCount = 0;
 
         random_device rd;
@@ -37,19 +39,33 @@ class Tree {
             if (ch == 'X') {
                 int randomNum = distr(gen);
 
-                if (randomNum <= 35) return "F-[[X]+X]+F[+FX]-X";
-                else if (randomNum <= 65) return "FF-[-X+X+X]+[+X-X-X]";
-                else if (randomNum <= 90) return "F[+X][-X]FX";
-                else return "F[-X]X";
+                switch (treeType) {
+                    case 1:
+                        if (randomNum <= 35) return "F-[X]+F[+F]-X";
+                        else if (randomNum <= 65) return "FF-[-X+X]+[+X-X]";
+                        else if (randomNum <= 90) return "F[+X][-X]FX";
+                        else return "F[-X]X";
+                        break;
+                    case 2:
+                        if (randomNum <= 45) return "F[++X]F[-X]+X";
+                        else if (randomNum <= 80) return "F[--X]F[+X]-X";
+                        else return "F[+++X][-X]";
+                        break;
+                    default:
+                        break;
+                }
             }
             else if (ch == 'F') {
-                return "FF";
+                int randomNum = distr(gen);
+                if (randomNum <= 80) return "FF";
+                else return "F";
             }
             return string(1, ch);
         }
 
     public:
-        Tree() :
+        Tree(int type) :
+            treeType(type),
             gen(rd()),
             distr(1, 100)
         {
@@ -57,7 +73,7 @@ class Tree {
         }
 
         void grow() {
-            if (currentSentence.length() > 60000) return; // capped length
+            if (currentSentence.length() > 20000) return; // capped length
             
             string nextSentence = "";
             for (char c: currentSentence) {
@@ -133,7 +149,7 @@ EMSCRIPTEN_BINDINGS(bonsai_module) {
     emscripten::register_vector<Segment>("VectorSegment");
 
     emscripten::class_<Tree>("BonsaiTree")
-        .constructor<>()
+        .constructor<int>()
         .function("grow", &Tree::grow)
         .function("reset", &Tree::reset)
         .function("generateSegments", &Tree::generateSegments);

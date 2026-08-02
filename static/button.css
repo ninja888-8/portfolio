@@ -1,0 +1,58 @@
+.home-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background-color: rgba(255, 255, 255, 0.50);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.home-btn:hover {
+    background-color: rgba(255, 255, 255, 0.80);
+    transform: scale(1.08);
+}
+
+.home-btn:active {
+    transform: scale(0.95);
+}
+
+.home-btn img {
+    width: 45px;
+}
+
+.bouncing-item {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: #4f71be;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  user-select: none;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.bouncing-item:hover {
+  background-color: #8eaaec;
+  cursor: pointer;
+}
