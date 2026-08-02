@@ -40,15 +40,15 @@
   align-items: center;
   justify-content: center;
   padding: 12px;
-  background-color: #4f71be;
+  background-color: #7993d2;
   border-radius: 8px;
   transition: background-color 0.2s ease;
   user-select: none;
 
   color: #ffffff;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: Calibri, sans-serif;
+  font-size: 18px;
+  font-weight: 1000;
   letter-spacing: 0.5px;
 }
 
