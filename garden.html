@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>portfolio</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+
+<body style="overflow: hidden;">
+  <div class="navbar">
+    <div class="nav-name">
+      <p class="name">Eric Ning</p>
+    </div>
+
+    <div class="nav-options">
+      <a href="projects.html">Projects</a>
+      <a href="aboutme.html">About</a>
+      <a href="garden.html">Garden</a>
+    </div>
+  </div>
+  <div id="canvas">
+    <canvas id="jagged-bg"></canvas>
+    <canvas id="bonsaiCanvas"></canvas>
+  </div>
+
+  <script src="./static/background.js"></script>
+  <script src="./static/garden.js"></script>
+  <script>
+    Module.onRuntimeInitialized = () => {
+      const canvas = document.getElementById('bonsaiCanvas');
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const canvas2 = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      const tree = new Module.BonsaiTree();
+
+      let windTime = 0;
+
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        windTime += 0.03;
+
+        const segments = tree.generateSegments(canvas.width/2, canvas.height-50, windTime, 0.50);
+
+        for (let i = 0; i < segments.size(); i++) {
+          const seg = segments.get(i);
+
+          ctx.beginPath();
+          ctx.moveTo(seg.x1, seg.y1);
+          ctx.lineTo(seg.x2, seg.y2);
+
+          ctx.lineWidth = Math.max(1, 8-seg.depth * 1.5);
+          ctx.strokeStyle = seg.depth >= 2 ? '#a8c3a0' : '#5c4033';
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        }
+
+        segments.delete();
+        requestAnimationFrame(render);
+      }
+      canvas2.addEventListener('click', () => tree.grow());
+      render();
+    }
+  </script>
+
+  <button class="home-btn">
+    <a href="index.html">
+      <span class="btn-content-wrapper">
+        <img src="./assets/home-icon.png" class="btn-icon">
+      </span>
+    </a>
+  </button>
+
+  <div class="footer" style="bottom: 0; left: 0;">
+    <a id="footer-button" class="footer-item" href="https://www.linkedin.com/in/eric-ning-b491a01a8/"> LinkedIn </a>
+    <a id="footer-button" class="footer-item" href="https://github.com/ninja888-8"> GitHub </a>
+    <a id="footer-button" class="footer-item" href="./assets/resume.pdf"> Resume </a>
+  </div>
+</body>
+
+</html>

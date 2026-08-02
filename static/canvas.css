@@ -1,0 +1,21 @@
+#canvas {
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+}
+
+#bonsaiCanvas {
+    z-index: -1;
+}
+
+#jagged-bg {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #0f0f13;
+    background-image: radial-gradient(circle 80vh at var(--cursor-x) var(--cursor-y),
+      var(--cursor-bgcolor),
+      transparent 100%);
+    z-index: -1;
+}

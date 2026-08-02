@@ -1,4 +1,4 @@
-@import 'background.css';
+@import 'canvas.css';
 @import 'footer.css';
 @import 'home-button.css';
 @import 'nav.css';
@@ -53,10 +53,6 @@ p {
   padding: 0;
   min-height: 92vh;
   z-index: 10;
-
-  background-image: radial-gradient(circle 100vh at var(--cursor-x) var(--cursor-y),
-      var(--cursor-bgcolor),
-      transparent 100%);
 }
 
 .bg1 {
