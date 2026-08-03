@@ -30,7 +30,54 @@
 
   <script src="./static/background.js"></script>
   <script src="./static/garden.js"></script>
-  <script src="./static/reset-bounce.js"></script>
+  <script>
+    const floatingButton = document.getElementById('floating-btn');
+
+    let posX = Math.random() * (window.innerWidth - 100);
+    let posY = Math.random() * (window.innerHeight - 100);
+
+    let vx = 0.3;
+    let vy = 0.1;
+
+    function animate() {
+      const rect = floatingButton.getBoundingClientRect();
+      const maxX = window.innerWidth - rect.width;
+      const maxY = window.innerHeight - rect.height;
+
+      posX += vx;
+      posY += vy;
+
+      if (posX <= 0) {
+        posX = 0;
+        vx *= -1;
+      } 
+      else if (posX >= maxX) {
+        posX = maxX;
+        vx *= -1;
+      }
+
+      if (posY <= 0) {
+        posY = 0;
+        vy *= -1;
+      } 
+      else if (posY >= maxY) {
+        posY = maxY;
+        vy *= -1;
+      }
+
+      floatingButton.style.transform = `translate(${posX}px, ${posY}px)`;
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+    window.addEventListener('resize', () => {
+      const rect = floatingButton.getBoundingClientRect();
+      if (posX > window.innerWidth - rect.width) posX = window.innerWidth - rect.width;
+      if (posY > window.innerHeight - rect.height) posY = window.innerHeight - rect.height;
+    });
+  </script>
   <script>
     Module.onRuntimeInitialized = () => {
       const canvas = document.getElementById('bonsaiCanvas');
@@ -57,22 +104,13 @@
           ctx.moveTo(seg.x1, seg.y1);
           ctx.lineTo(seg.x2, seg.y2);
 
-          ctx.lineWidth = Math.max(2, 10 - seg.depth * 1.5);
+          ctx.lineWidth = Math.max(1, 8 - seg.depth * 1.5);
           ctx.strokeStyle = seg.depth >= 2 ? '#a8c3a0' : '#5c4033';
           ctx.lineCap = 'round';
           ctx.stroke();
         }
 
         segments.delete();
-
-        ctx.save();
-        ctx.font = '500 18px system-ui, sans-serif';
-        ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'top';
-        ctx.fillText('click the canvas anywhere to grow me!', canvas.width / 2, canvas.height - 40);
-        ctx.restore();
-
         requestAnimationFrame(render);
       }
       canvas2.addEventListener('click', () => tree.grow());
